@@ -1,0 +1,67 @@
+type MiniChef @entity {
+  # Contract address
+  id: ID!
+
+  #owner: Bytes!
+  #migrator: Bytes!
+
+  hotpot: Bytes!
+  hotpotPerSecond: BigInt!
+  totalAllocPoint: BigInt!
+  #acc_hotpot_precision prob better as constant
+  #startBlock idk if we need this
+
+  pools: [Pool!] @derivedFrom(field: "miniChef")
+  poolCount: BigInt!
+
+  #history: [History!]! @derivedFrom(field: "miniChef")
+
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type Pool @entity {
+  # Index of pool in poolInfo on MasterChef contract
+  id: ID!
+  miniChef: MiniChef!
+  pair: Bytes!
+
+  rewarder: Rewarder
+
+  allocPoint: BigInt!
+  lastRewardTime: BigInt!
+  accHotpotPerShare: BigInt!
+
+  slpBalance: BigInt!
+
+  users: [User!]! @derivedFrom(field: "pool")
+  userCount: BigInt!
+
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type Rewarder @entity {
+  # address
+  id: ID!
+  rewardToken: Bytes!
+  rewardPerSecond: BigInt!
+
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type User @entity {
+  # Pool id concatenated with user address
+  id: ID!
+
+  address: Bytes!
+  pool: Pool
+
+  amount: BigInt!
+  rewardDebt: BigInt!
+  hotpotHarvested: BigInt!
+
+  timestamp: BigInt!
+  block: BigInt!
+}

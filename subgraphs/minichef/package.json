@@ -1,0 +1,22 @@
+{
+    "name": "minichef",
+    "license": "MIT",
+    "version": "1.0.0",
+    "author": "HotpotSwap",
+    "scripts": {
+        "codegen": "graph codegen subgraph.yaml",
+        "build": "graph build subgraph.yaml",
+        "create-local": "graph create --node http://localhost:8020/ /hotpotswap/hotpotswap",
+        "remove-local": "graph remove --node http://localhost:8020/ /hotpotswap/hotpotswap",
+        "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 /hotpotswap/hotpotswap",
+
+        "deploy:arbitrum": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ matthewlilley/arbitrum-minichef subgraph.yaml",
+        "deploy:matic": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/matic-minichef subgraph.yaml",
+        "deploy:xdai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/xdai-minichef subgraph.yaml",
+
+        "prepare:arbitrum": "mustache config/arbitrum.json template.yaml > subgraph.yaml",
+        "prepare:matic": "mustache config/matic.json template.yaml > subgraph.yaml",
+        "prepare:xdai": "mustache config/xdai.json template.yaml > subgraph.yaml",
+        "prepare:harmony": "mustache config/harmony.json template.yaml > subgraph.yaml"
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "bentobox",
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": "HotpotSwap",
+  "files": [
+    "generated"
+  ],
+  "scripts": {
+    "codegen": "graph codegen subgraph.yaml",
+    "build": "graph build subgraph.yaml",
+    "create-local": "graph create --node http://localhost:8020/ /hotpotswap/bentobox",
+    "remove-local": "graph remove --node http://localhost:8020/ /hotpotswap/bentobox",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 /hotpotswap/bentobox",
+
+    "deploy:mainnet": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/bentobox subgraph.yaml",
+    "deploy:ropsten": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/ropsten-bentobox subgraph.yaml",
+    "deploy:bsc": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/bsc-bentobox subgraph.yaml",
+    "deploy:fantom": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/fantom-bentobox subgraph.yaml",
+    "deploy:matic": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/matic-bentobox subgraph.yaml",
+    "deploy:xdai": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/xdai-bentobox subgraph.yaml",
+    "deploy:arbitrum": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/arbitrum-bentobox subgraph.yaml",
+    "deploy:rinkeby": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/rinkeby-bentobox subgraph.yaml",
+
+    "prepare:mainnet": "mustache config/mainnet.json template.yaml > subgraph.yaml",
+    "prepare:ropsten": "mustache config/ropsten.json template.yaml > subgraph.yaml",
+    "prepare:bsc": "mustache config/bsc.json template.yaml > subgraph.yaml",
+    "prepare:fantom": "mustache config/fantom.json template.yaml > subgraph.yaml",
+    "prepare:goerli": ".",
+    "prepare:kovan": ".",
+    "prepare:matic": "mustache config/matic.json template.yaml > subgraph.yaml",
+    "prepare:rinkeby": "mustache config/rinkeby.json template.yaml > subgraph.yaml",
+    "prepare:xdai": "mustache config/xdai.json template.yaml > subgraph.yaml",
+    "prepare:arbitrum": "mustache config/arbitrum.json template.yaml > subgraph.yaml"
+  }
+}

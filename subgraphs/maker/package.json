@@ -1,0 +1,19 @@
+{
+    "name": "maker",
+    "license": "MIT",
+    "version": "1.0.0",
+    "author": "HotpotSwap",
+    "scripts": {
+        "codegen": "graph codegen subgraph.yaml",
+        "build": "graph build subgraph.yaml",
+
+        "create-local": "graph create --node http://localhost:8020/ /hotpotswap/hotpotswap",
+        "remove-local": "graph remove --node http://localhost:8020/ /hotpotswap/hotpotswap",
+        "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 /hotpotswap/hotpotswap",
+
+        "prepare:mainnet": "mustache config/mainnet.json template.yaml > subgraph.yaml",
+
+        "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ hotpotswap/hotpot-maker subgraph.yaml",
+        "deploy-studio": "graph deploy --studio hotpot---hotpotmaker"
+    }
+}
